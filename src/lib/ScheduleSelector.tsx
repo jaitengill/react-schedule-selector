@@ -177,8 +177,8 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
     this.endSelection = this.endSelection.bind(this)
     this.handleMouseUpEvent = this.handleMouseUpEvent.bind(this)
     this.handleMouseEnterEvent = this.handleMouseEnterEvent.bind(this)
-    this.handleTouchMoveEvent = this.handleTouchMoveEvent.bind(this)
-    this.handleTouchEndEvent = this.handleTouchEndEvent.bind(this)
+    // this.handleTouchMoveEvent = this.handleTouchMoveEvent.bind(this)
+    // this.handleTouchEndEvent = this.handleTouchEndEvent.bind(this)
     this.handleSelectionStartEvent = this.handleSelectionStartEvent.bind(this)
   }
 
@@ -192,22 +192,22 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
     document.addEventListener('mouseup', this.endSelection)
 
     // Prevent page scrolling when user is dragging on the date cells
-    this.cellToDate.forEach((value, dateCell) => {
-      if (dateCell && dateCell.addEventListener) {
-        // @ts-ignore
-        dateCell.addEventListener('touchmove', preventScroll, { passive: false })
-      }
-    })
+    // this.cellToDate.forEach((value, dateCell) => {
+    //   if (dateCell && dateCell.addEventListener) {
+    //     // @ts-ignore
+    //     dateCell.addEventListener('touchmove', preventScroll, { passive: false })
+    //   }
+    // })
   }
 
   componentWillUnmount() {
     document.removeEventListener('mouseup', this.endSelection)
-    this.cellToDate.forEach((value, dateCell) => {
-      if (dateCell && dateCell.removeEventListener) {
-        // @ts-ignore
-        dateCell.removeEventListener('touchmove', preventScroll)
-      }
-    })
+    // this.cellToDate.forEach((value, dateCell) => {
+    //   if (dateCell && dateCell.removeEventListener) {
+    //     // @ts-ignore
+    //     dateCell.removeEventListener('touchmove', preventScroll)
+    //   }
+    // })
   }
 
   // Performs a lookup into this.cellToDate to retrieve the Date that corresponds to
@@ -328,8 +328,8 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
         // in the time parameter, instead these handlers will do their job using the default Event
         // parameters
         onTouchStart={startHandler}
-        onTouchMove={this.handleTouchMoveEvent}
-        onTouchEnd={this.handleTouchEndEvent}
+        // onTouchMove={this.handleTouchMoveEvent}
+        // onTouchEnd={this.handleTouchEndEvent}
       >
         {this.renderDateCell(time, selected)}
       </GridCell>
